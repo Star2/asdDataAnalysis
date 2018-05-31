@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/asdDataAnalysis.iml" filepath="$PROJECT_DIR$/asdDataAnalysis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/asddata-common/asddata-common.iml" filepath="$PROJECT_DIR$/asddata-common/asddata-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/asddata-core/asddata-core.iml" filepath="$PROJECT_DIR$/asddata-core/asddata-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dataprocess/dataprocess.iml" filepath="$PROJECT_DIR$/dataprocess/dataprocess.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aisidi.analysis.core.mapper.UserFlowInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.aisidi.analysis.core.model.UserFlowInfo" >
+    <id column="current_month" property="currentMonth" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="phone_no" property="phoneNo" jdbcType="INTEGER" />
+    <result column="user_status" property="userStatus" jdbcType="VARCHAR" />
+    <result column="status_change_date" property="statusChangeDate" jdbcType="TIMESTAMP" />
+    <result column="product_offer_id" property="productOfferId" jdbcType="VARCHAR" />
+    <result column="active_time" property="activeTime" jdbcType="TIMESTAMP" />
+    <result column="traffic_use" property="trafficUse" jdbcType="VARCHAR" />
+    <result column="yet" property="yet" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    current_month, id, user_id, phone_no, user_status, status_change_date, product_offer_id, 
+    active_time, traffic_use, yet
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.aisidi.analysis.core.model.UserFlowInfoKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from asd_user_flow_info
+    where current_month = #{currentMonth,jdbcType=INTEGER}
+      and id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.aisidi.analysis.core.model.UserFlowInfoKey" >
+    delete from asd_user_flow_info
+    where current_month = #{currentMonth,jdbcType=INTEGER}
+      and id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.aisidi.analysis.core.model.UserFlowInfo" >
+    insert into asd_user_flow_info (current_month, id, user_id, 
+      phone_no, user_status, status_change_date, 
+      product_offer_id, active_time, traffic_use, 
+      yet)
+    values (#{currentMonth,jdbcType=INTEGER}, #{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{phoneNo,jdbcType=INTEGER}, #{userStatus,jdbcType=VARCHAR}, #{statusChangeDate,jdbcType=TIMESTAMP}, 
+      #{productOfferId,jdbcType=VARCHAR}, #{activeTime,jdbcType=TIMESTAMP}, #{trafficUse,jdbcType=VARCHAR}, 
+      #{yet,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aisidi.analysis.core.model.UserFlowInfo" >
+    insert into asd_user_flow_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="currentMonth != null" >
+        current_month,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="phoneNo != null" >
+        phone_no,
+      </if>
+      <if test="userStatus != null" >
+        user_status,
+      </if>
+      <if test="statusChangeDate != null" >
+        status_change_date,
+      </if>
+      <if test="productOfferId != null" >
+        product_offer_id,
+      </if>
+      <if test="activeTime != null" >
+        active_time,
+      </if>
+      <if test="trafficUse != null" >
+        traffic_use,
+      </if>
+      <if test="yet != null" >
+        yet,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="currentMonth != null" >
+        #{currentMonth,jdbcType=INTEGER},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null" >
+        #{phoneNo,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="statusChangeDate != null" >
+        #{statusChangeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productOfferId != null" >
+        #{productOfferId,jdbcType=VARCHAR},
+      </if>
+      <if test="activeTime != null" >
+        #{activeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trafficUse != null" >
+        #{trafficUse,jdbcType=VARCHAR},
+      </if>
+      <if test="yet != null" >
+        #{yet,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aisidi.analysis.core.model.UserFlowInfo" >
+    update asd_user_flow_info
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null" >
+        phone_no = #{phoneNo,jdbcType=INTEGER},
+      </if>
+      <if test="userStatus != null" >
+        user_status = #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="statusChangeDate != null" >
+        status_change_date = #{statusChangeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productOfferId != null" >
+        product_offer_id = #{productOfferId,jdbcType=VARCHAR},
+      </if>
+      <if test="activeTime != null" >
+        active_time = #{activeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trafficUse != null" >
+        traffic_use = #{trafficUse,jdbcType=VARCHAR},
+      </if>
+      <if test="yet != null" >
+        yet = #{yet,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where current_month = #{currentMonth,jdbcType=INTEGER}
+      and id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aisidi.analysis.core.model.UserFlowInfo" >
+    update asd_user_flow_info
+    set user_id = #{userId,jdbcType=VARCHAR},
+      phone_no = #{phoneNo,jdbcType=INTEGER},
+      user_status = #{userStatus,jdbcType=VARCHAR},
+      status_change_date = #{statusChangeDate,jdbcType=TIMESTAMP},
+      product_offer_id = #{productOfferId,jdbcType=VARCHAR},
+      active_time = #{activeTime,jdbcType=TIMESTAMP},
+      traffic_use = #{trafficUse,jdbcType=VARCHAR},
+      yet = #{yet,jdbcType=DOUBLE}
+    where current_month = #{currentMonth,jdbcType=INTEGER}
+      and id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

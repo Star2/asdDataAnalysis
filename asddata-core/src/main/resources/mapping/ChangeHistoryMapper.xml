@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aisidi.analysis.core.mapper.ChangeHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.aisidi.analysis.core.model.ChangeHistory" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="phone_no" property="phoneNo" jdbcType="VARCHAR" />
+    <result column="old_offer_id" property="oldOfferId" jdbcType="VARCHAR" />
+    <result column="new_offer_id" property="newOfferId" jdbcType="VARCHAR" />
+    <result column="change_time" property="changeTime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="is_handle" property="isHandle" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultData" type="com.aisidi.analysis.core.model.ResultData" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="phone_no" property="phoneNo" jdbcType="VARCHAR" />
+    <result column="old_offer_id" property="oldOfferId" jdbcType="VARCHAR" />
+    <result column="new_offer_id" property="newOfferId" jdbcType="VARCHAR" />
+    <result column="change_time" property="changeTime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="is_handle" property="isHandle" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, phone_no, old_offer_id, new_offer_id, change_time, type, is_handle
+  </sql>
+  <select id="selectSelfChange" resultMap="ResultData">
+   select b.id, b.phone_no,a.product_offer_id as old_offer_id,a.product_offer_id as new_offer_id, b.change_time, b.type, b.is_handle
+    FROM
+    (SELECT product_offer_id,phone_no FROM asd_self_handle) a
+    inner JOIN
+    (SELECT id, phone_no, change_time, type, is_handle FROM asd_change_history) b
+    ON a.phone_no=b.phone_no
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from asd_change_history
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from asd_change_history
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.aisidi.analysis.core.model.ChangeHistory" >
+    insert into asd_change_history (id, phone_no, old_offer_id, 
+      new_offer_id, change_time, type, 
+      is_handle)
+    values (#{id,jdbcType=VARCHAR}, #{phoneNo,jdbcType=VARCHAR}, #{oldOfferId,jdbcType=VARCHAR}, 
+      #{newOfferId,jdbcType=VARCHAR}, #{changeTime,jdbcType=TIMESTAMP}, #{type,jdbcType=VARCHAR}, 
+      #{isHandle,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aisidi.analysis.core.model.ChangeHistory" >
+    insert into asd_change_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="phoneNo != null" >
+        phone_no,
+      </if>
+      <if test="oldOfferId != null" >
+        old_offer_id,
+      </if>
+      <if test="newOfferId != null" >
+        new_offer_id,
+      </if>
+      <if test="changeTime != null" >
+        change_time,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="isHandle != null" >
+        is_handle,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null" >
+        #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oldOfferId != null" >
+        #{oldOfferId,jdbcType=VARCHAR},
+      </if>
+      <if test="newOfferId != null" >
+        #{newOfferId,jdbcType=VARCHAR},
+      </if>
+      <if test="changeTime != null" >
+        #{changeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="isHandle != null" >
+        #{isHandle,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aisidi.analysis.core.model.ChangeHistory" >
+    update asd_change_history
+    <set >
+      <if test="phoneNo != null" >
+        phone_no = #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="oldOfferId != null" >
+        old_offer_id = #{oldOfferId,jdbcType=VARCHAR},
+      </if>
+      <if test="newOfferId != null" >
+        new_offer_id = #{newOfferId,jdbcType=VARCHAR},
+      </if>
+      <if test="changeTime != null" >
+        change_time = #{changeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="isHandle != null" >
+        is_handle = #{isHandle,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aisidi.analysis.core.model.ChangeHistory" >
+    update asd_change_history
+    set phone_no = #{phoneNo,jdbcType=VARCHAR},
+      old_offer_id = #{oldOfferId,jdbcType=VARCHAR},
+      new_offer_id = #{newOfferId,jdbcType=VARCHAR},
+      change_time = #{changeTime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=VARCHAR},
+      is_handle = #{isHandle,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
