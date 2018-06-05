@@ -1,4 +1,4 @@
-package com.aisidi.analysis.core.service;
+package com.aisidi.analysis.core.service.core;
 
 import com.aisidi.analysis.core.model.ChangeHistory;
 import com.aisidi.analysis.core.model.ResultData;

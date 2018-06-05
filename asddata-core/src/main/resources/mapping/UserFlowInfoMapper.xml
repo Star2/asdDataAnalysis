@@ -5,13 +5,18 @@
     <id column="current_month" property="currentMonth" jdbcType="INTEGER" />
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
-    <result column="phone_no" property="phoneNo" jdbcType="INTEGER" />
+    <result column="phone_no" property="phoneNo" jdbcType="VARCHAR" />
     <result column="user_status" property="userStatus" jdbcType="VARCHAR" />
     <result column="status_change_date" property="statusChangeDate" jdbcType="TIMESTAMP" />
     <result column="product_offer_id" property="productOfferId" jdbcType="VARCHAR" />
     <result column="active_time" property="activeTime" jdbcType="TIMESTAMP" />
     <result column="traffic_use" property="trafficUse" jdbcType="VARCHAR" />
     <result column="yet" property="yet" jdbcType="DOUBLE" />
+  </resultMap>
+   <resultMap id="UserFlowDTO" type="com.aisidi.analysis.core.model.dto.UserFlowDTO" >
+    <result column="phone_no" property="phoneNo" jdbcType="VARCHAR" />
+    <result column="current_month" property="months" jdbcType="VARCHAR" />
+    <result column="traffic_use" property="traffics" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     current_month, id, user_id, phone_no, user_status, status_change_date, product_offer_id, 
@@ -35,7 +40,7 @@
       product_offer_id, active_time, traffic_use, 
       yet)
     values (#{currentMonth,jdbcType=INTEGER}, #{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
-      #{phoneNo,jdbcType=INTEGER}, #{userStatus,jdbcType=VARCHAR}, #{statusChangeDate,jdbcType=TIMESTAMP}, 
+      #{phoneNo,jdbcType=VARCHAR}, #{userStatus,jdbcType=VARCHAR}, #{statusChangeDate,jdbcType=TIMESTAMP}, 
       #{productOfferId,jdbcType=VARCHAR}, #{activeTime,jdbcType=TIMESTAMP}, #{trafficUse,jdbcType=VARCHAR}, 
       #{yet,jdbcType=DOUBLE})
   </insert>
@@ -84,7 +89,7 @@
         #{userId,jdbcType=VARCHAR},
       </if>
       <if test="phoneNo != null" >
-        #{phoneNo,jdbcType=INTEGER},
+        #{phoneNo,jdbcType=VARCHAR},
       </if>
       <if test="userStatus != null" >
         #{userStatus,jdbcType=VARCHAR},
@@ -113,7 +118,7 @@
         user_id = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="phoneNo != null" >
-        phone_no = #{phoneNo,jdbcType=INTEGER},
+        phone_no = #{phoneNo,jdbcType=VARCHAR},
       </if>
       <if test="userStatus != null" >
         user_status = #{userStatus,jdbcType=VARCHAR},
@@ -140,7 +145,7 @@
   <update id="updateByPrimaryKey" parameterType="com.aisidi.analysis.core.model.UserFlowInfo" >
     update asd_user_flow_info
     set user_id = #{userId,jdbcType=VARCHAR},
-      phone_no = #{phoneNo,jdbcType=INTEGER},
+      phone_no = #{phoneNo,jdbcType=VARCHAR},
       user_status = #{userStatus,jdbcType=VARCHAR},
       status_change_date = #{statusChangeDate,jdbcType=TIMESTAMP},
       product_offer_id = #{productOfferId,jdbcType=VARCHAR},
@@ -150,4 +155,16 @@
     where current_month = #{currentMonth,jdbcType=INTEGER}
       and id = #{id,jdbcType=VARCHAR}
   </update>
+  
+  <select id="queryUserFlow" resultMap="UserFlowDTO" parameterType="java.lang.Integer" >
+    SELECT
+  	 phone_no                    AS phone_no, 
+ 	 GROUP_CONCAT(current_month) AS current_month,
+  	 GROUP_CONCAT(traffic_use)   AS traffic_use
+	 FROM asd_user_flow_info flow
+     WHERE flow.current_month = #{month,jdbcType=INTEGER} 
+     	OR flow.current_month = #{lastMonth,jdbcType=INTEGER} 
+    	OR flow.current_month = #{llastMonth,jdbcType=INTEGER}
+	GROUP BY phone_no
+  </select>
 </mapper>

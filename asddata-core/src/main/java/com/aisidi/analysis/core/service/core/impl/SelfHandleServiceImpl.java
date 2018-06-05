@@ -1,8 +1,8 @@
-package com.aisidi.analysis.core.service.impl;
+package com.aisidi.analysis.core.service.core.impl;
 
 import com.aisidi.analysis.core.mapper.SelfHandleMapper;
 import com.aisidi.analysis.core.model.SelfHandle;
-import com.aisidi.analysis.core.service.SelfHandleService;
+import com.aisidi.analysis.core.service.core.SelfHandleService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
