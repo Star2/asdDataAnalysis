@@ -1,4 +1,4 @@
-package com.aisidi.analysis.core.service;
+package com.aisidi.analysis.core.service.core;
 
 import com.aisidi.analysis.core.model.SelfHandle;
 import com.github.pagehelper.PageInfo;

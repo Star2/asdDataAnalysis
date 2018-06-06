@@ -1,9 +1,10 @@
-package com.aisidi.analysis.core.service.impl;
+package com.aisidi.analysis.core.service.core.impl;
 
 import com.aisidi.analysis.core.mapper.ChangeHistoryMapper;
 import com.aisidi.analysis.core.model.ChangeHistory;
 import com.aisidi.analysis.core.model.ResultData;
-import com.aisidi.analysis.core.service.ChangeHistoryService;
+import com.aisidi.analysis.core.service.core.ChangeHistoryService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

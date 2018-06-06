@@ -1,10 +1,12 @@
-package com.analysis.dataprocess.analysis;
+package com.analysis.dataprocess.selfHandle;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.aisidi.analysis.core.mapper.resultDataMapper;
 import com.aisidi.analysis.core.model.ResultData;
-import com.aisidi.analysis.core.service.ChangeHistoryService;
-import org.springframework.beans.factory.annotation.Autowired;
-import java.util.List;
+import com.aisidi.analysis.core.service.core.ChangeHistoryService;
 
 /**
  * 自主办理回调数据
@@ -12,7 +14,7 @@ import java.util.List;
  * @author zhaojy
  * @date 2018/5/29
  */
-public class RegressSelfHandle {
+public class regressSelfHandle {
 
 
     @Autowired
