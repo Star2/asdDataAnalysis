@@ -1,11 +1,10 @@
 package com.aisidi.analysis.core.controller;
 
 import com.aisidi.analysis.core.mapper.resultDataMapper;
-import com.aisidi.analysis.core.model.ChangeHistory;
 import com.aisidi.analysis.core.model.ResultData;
 import com.aisidi.analysis.core.model.SelfHandle;
-import com.aisidi.analysis.core.service.core.ChangeHistoryService;
-import com.aisidi.analysis.core.service.core.SelfHandleService;
+import com.aisidi.analysis.core.service.ChangeHistoryService;
+import com.aisidi.analysis.core.service.SelfHandleService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,13 +43,17 @@ public class SelfHandleController {
         return selfHandleService.findItemByPage(1,2);
     }
 
+    /**
+     *
+     * @return
+     */
     @ResponseBody
     @PostMapping("/selectSelf")
     public List<ResultData> selectSelf(){
         List<ResultData> list = changeHistoryService.selectSelfChange();
-//        resultDataMapper.insertByBatch(list);
+        resultDataMapper.insertByBatch(list);
         return list;
-//        return changeHistoryService.selectSelfChange();
     }
+
 
 }

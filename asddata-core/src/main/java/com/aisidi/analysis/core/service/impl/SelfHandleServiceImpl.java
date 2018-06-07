@@ -1,16 +1,12 @@
-package com.aisidi.analysis.core.service.core.impl;
+package com.aisidi.analysis.core.service.impl;
 
 import com.aisidi.analysis.core.mapper.SelfHandleMapper;
 import com.aisidi.analysis.core.model.SelfHandle;
-import com.aisidi.analysis.core.service.core.SelfHandleService;
+import com.aisidi.analysis.core.service.SelfHandleService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 
