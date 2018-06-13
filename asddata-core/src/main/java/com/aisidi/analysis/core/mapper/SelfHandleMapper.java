@@ -51,4 +51,7 @@ public interface SelfHandleMapper {
      * @return 数量
      */
     int selectCount();
+
+    
+	List<SelfHandle> queryByPhoneAndTime(@Param("phoneNo")String phoneNo, @Param("month")String month);
 }

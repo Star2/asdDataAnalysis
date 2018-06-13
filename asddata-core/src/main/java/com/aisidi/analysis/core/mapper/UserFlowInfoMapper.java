@@ -21,5 +21,13 @@ public interface UserFlowInfoMapper {
 
     int updateByPrimaryKey(UserFlowInfo record);
     
-    List<UserFlowDTO> queryUserFlow(@Param("month")Integer mouth, @Param("lastMonth")Integer lastMonth, @Param("llastMonth")Integer llastMonth);
+    List<UserFlowDTO> queryUserFlow(@Param("month")Integer mouth, 
+						    		@Param("lastMonth")Integer lastMonth, 
+						    		@Param("llastMonth")Integer llastMonth , 
+						    		@Param("startPage")long startPage  , 
+						    		@Param("endPage")long endPage );
+
+	int queryUserFlowCount(@Param("month")Integer month, 
+							@Param("lastMonth")Integer lastMonth, 
+							@Param("llastMonth")Integer llastMonth);
 }

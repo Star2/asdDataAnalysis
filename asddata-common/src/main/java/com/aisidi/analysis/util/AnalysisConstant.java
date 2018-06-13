@@ -1,5 +1,7 @@
 package com.aisidi.analysis.util;
 
+import java.math.BigDecimal;
+
 /**
  * 常量类
  * @author zhaojy
@@ -12,4 +14,6 @@ public class AnalysisConstant {
     public static final String result_type_first = "1",
             result_type_re = "2",
             result_type_back = "3";
+    
+    public static final BigDecimal TWO = new BigDecimal(2);
 }

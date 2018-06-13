@@ -131,4 +131,11 @@
       is_handle = #{isHandle,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  
+  <select id="queryByPhoneDesc" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+	<include refid="Base_Column_List" />
+    FROM
+   	asd_change_history history where history.phone_no = #{phoneNo,jdbcType=VARCHAR} order by change_time desc ;
+  </select>
 </mapper>

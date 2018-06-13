@@ -19,4 +19,6 @@ public interface ChangeHistoryMapper {
     int updateByPrimaryKey(ChangeHistory record);
 
     List<ResultData> selectSelfChange();
+
+	ChangeHistory queryByPhoneDesc(String phone);
 }

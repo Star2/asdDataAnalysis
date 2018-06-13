@@ -11,3 +11,13 @@ spring:
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.aisidi.analysis.core.model
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+  
+logging:
+  level:
+    com.aisidi.analysis.core.mapper: debug

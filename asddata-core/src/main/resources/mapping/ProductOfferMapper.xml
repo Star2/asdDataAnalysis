@@ -51,4 +51,10 @@
       </if>
     </trim>
   </insert>
+  <select id="query" resultMap="BaseResultMap" >
+    select 
+    *
+    from asd_product_offer o
+  </select>
+  
 </mapper>

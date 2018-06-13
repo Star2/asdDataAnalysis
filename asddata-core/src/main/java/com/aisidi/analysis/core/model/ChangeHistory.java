@@ -2,6 +2,10 @@ package com.aisidi.analysis.core.model;
 
 import java.util.Date;
 
+import com.aisidi.analysis.enums.ChangeType;
+import com.aisidi.analysis.enums.IsHandle;
+import com.aisidi.analysis.util.AsdUtil;
+
 public class ChangeHistory {
     private String id;
 
@@ -17,6 +21,18 @@ public class ChangeHistory {
 
     private String isHandle;
 
+    public ChangeHistory(String phone , String oldOfferId , String newOfferId/* ,String changeTime*/){
+    	this.id = AsdUtil.getId();
+    	this.phoneNo = phone ;
+    	this.oldOfferId = oldOfferId ;
+    	this.newOfferId = newOfferId ;
+    	//this.changeTime = DateUtil.parseDate(changeTime);
+    	this.changeTime = new Date();
+    	type = ChangeType.INIT.getValue() ;
+    	isHandle = IsHandle.NO_HANDLE.getValue();
+    }
+    
+    
     public String getId() {
         return id;
     }
@@ -72,4 +88,24 @@ public class ChangeHistory {
     public void setIsHandle(String isHandle) {
         this.isHandle = isHandle == null ? null : isHandle.trim();
     }
+
+
+	public ChangeHistory(String id, String phoneNo, String oldOfferId, String newOfferId, Date changeTime, String type,
+			String isHandle) {
+		super();
+		this.id = id;
+		this.phoneNo = phoneNo;
+		this.oldOfferId = oldOfferId;
+		this.newOfferId = newOfferId;
+		this.changeTime = changeTime;
+		this.type = type;
+		this.isHandle = isHandle;
+	}
+
+
+	public ChangeHistory() {
+		super();
+	}
+    
+    
 }

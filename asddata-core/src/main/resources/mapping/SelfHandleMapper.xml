@@ -48,4 +48,12 @@
       #{item.effectiveTime,jdbcType=TIMESTAMP})
     </foreach>
   </insert>
+  
+  <select id="queryByPhoneAndTime" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from asd_self_handle handle
+    where handle.phone_no = #{phoneNo,jdbcType=VARCHAR} and DATE_FORMAT(handle.handle_time , '%Y%m%d') = #{month,jdbcType=VARCHAR}
+  </select>
+  
 </mapper>
